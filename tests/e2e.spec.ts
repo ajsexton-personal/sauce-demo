@@ -3,6 +3,8 @@ import { CartPage } from "../pages/cart.page";
 import { LoginPage } from "../pages/login.page";
 import { InventoryPage } from "../pages/inventory.page";
 import { CheckoutOnePage } from "../pages/checkout-one.page";
+import { CheckoutTwoPage } from "../pages/checkout-two.page";
+import { CheckoutCompletePage } from "../pages/checkout-complete.page";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("https://www.saucedemo.com/");
@@ -34,8 +36,18 @@ test("standard user can purchase something", async ({ page }) => {
   await checkoutOnePage.continueButton.click();
   expect(page.url()).toContain("checkout-step-two.html");
   //again should check the item is present / hasn't changed. revisit later
-  await page.getByTestId("finish").click();
-  await expect(page.getByTestId("complete-header")).toHaveText(
+  const checkoutTwoPage = new CheckoutTwoPage(page);
+  expect(await checkoutTwoPage.itemCount()).toBe(1);
+  expect(checkoutTwoPage.inventoryItemByIndex(0).name).toHaveText(
+    "Sauce Labs Fleece Jacket",
+  );
+  expect(await checkoutTwoPage.itemTotal.textContent()).toContain("49.99");
+  expect(await checkoutTwoPage.tax.textContent()).toContain("4.00");
+  expect(await checkoutTwoPage.total.textContent()).toContain("53.99");
+  await checkoutTwoPage.finishButton.click();
+  expect(page.url()).toContain("checkout-complete.html");
+  const checkoutCompletePage = new CheckoutCompletePage(page);
+  expect(checkoutCompletePage.completeHeader).toHaveText(
     "Thank you for your order!",
   );
 });

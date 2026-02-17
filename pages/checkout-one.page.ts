@@ -8,16 +8,16 @@ export class CheckoutOnePage {
   readonly postalCode: Locator;
   readonly cancelButton: Locator;
   readonly continueButton: Locator;
-  readonly error: Locator
+  readonly error: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    ((this.firstName = this.page.getByTestId("firstName")),
-      (this.lastName = this.page.getByTestId("lastName")));
+    this.firstName = this.page.getByTestId("firstName");
+    this.lastName = this.page.getByTestId("lastName");
     this.postalCode = this.page.getByTestId("postalCode");
     this.cancelButton = this.page.getByTestId("cancel");
     this.continueButton = this.page.getByTestId("continue");
-    this.error = this.page.getByTestId("error")
+    this.error = this.page.getByTestId("error");
   }
 
   header() {

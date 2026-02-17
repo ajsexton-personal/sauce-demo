@@ -43,7 +43,7 @@ test("can continue shopping", async ({ page }) => {
   expect(await inventoryPage.basketItemsInLocalStorage()).toHaveLength(1);
 });
 
-//this test will fail
+//this test will fail - users can checkout empty baskets
 test("cannot checkout an empty basket", async ({ page }) => {
   const cartPage = new CartPage(page);
   expect(await cartPage.itemCount()).toBe(1);

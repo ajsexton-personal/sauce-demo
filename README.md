@@ -2,6 +2,10 @@
 
 Automation demonstration using Playwright
 
+## pre-requisites
+
+1. have npm installed
+
 ## installation and setup
 
 1. install playwright `npx playwright install`
@@ -9,11 +13,15 @@ Automation demonstration using Playwright
 
 ## running tests
 
-run `npx playwright test`
+run `npx playwright test` or `npm run tests`
 
 if visual debug is required run `npx playwright test --ui` in the terminal
 
 tests can also be run from VSCodes test explorer
+
+note some tests are expected to fail. this is because they are revealing bugs
+
+there is a github action configured to be run on manual dispatch which will also execute tests. note: it is very slow due to playwright installation time
 
 ## notes
 
@@ -23,13 +31,18 @@ tests can also be run from VSCodes test explorer
 3. automate full e2e journey
 4. refactor to POM
 5. pick at least one other test per page, ideally a passing and failing scenario
+   only did a couple of failing scenarios due to time constraints
 
 ## todos / nice to haves
 
+most are for project / repo hygiene, although tests could obviously be extended and setup simplified
+
 1. ~~gh action, on pr / on push to main, workflow dispatch. fee tier gh so dont do this too early~~ get this for free from a playwright install
    playwright install on free tier is _really_ slow - nearly 10 mins. change this to workflow dispatch only
-2. pretttier pre-commit / husky
+2. pretttier pre-commit / husky rather than manual execution
 3. eslint
 4. dependabot
-5. conventional commits
+5. conventional commits enforced on pre-commit
 6. axe (accessibility check)
+7. more investigation of the various users, some will have interesting errors to dig into that could be covered by tests
+8. cleaner setup steps, they're quite verbose, repetetive and ui dependent. looks like i could just load state into local storage and navigate directly to pages under test
