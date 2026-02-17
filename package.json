@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Automation demonstration using Playwright",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "tests": "npx playwright test",
+    "prettier-fix": "npx prettier . --write"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ajsexton-personal/sauce-demo.git"
