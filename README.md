@@ -38,14 +38,18 @@ This will allow you to click into failing tests and review screenshots and trace
 5. pick at least one other test per page, ideally a passing and failing scenario
    - only did a couple of failing scenarios due to time constraints
 
+Co-pilot was not used in the production of this demo. Previously I've been on business licences and not had to consider usage and pricing, so I've not used it here as I didn't want to risk over-engineering and hitting monthly quota.
+
+General approach for testing is to target one full happy path e2e flow as this covers all core features (adding to basket, navigating to cart, checkout). Additional tests added are targeted per page. A more complete solution would have setup obfuscated away from tests and not use the UI. As is is a little noisy and slower than it could be.
+
 ## todos / nice to haves
 
 most are for project / repo hygiene, although tests could obviously be extended and setup simplified
 
-1. ~~gh action, on pr / on push to main, workflow dispatch. fee tier gh so dont do this too early~~  
-    - get this for free from a playwright install
-    - playwright install on free tier is _really_ slow - nearly 10 mins. change this to workflow dispatch only
-2. pretttier pre-commit / husky rather than manual execution
+1. ~~gh action, on pr / on push to main, workflow dispatch. free tier gh so dont do this too early~~
+   - get this for free from a playwright install
+   - playwright install on free tier is _really_ slow - nearly 10 mins. change this to workflow dispatch only
+2. pretttier pre-commit / husky rather than just manual execution and checks in CI
 3. eslint
 4. dependabot
 5. conventional commits enforced on pre-commit
