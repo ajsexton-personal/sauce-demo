@@ -19,7 +19,7 @@ test("can add and remove from basket", async ({ page }) => {
   await expect(inventoryPage.header().shoppingCartItemCount).toHaveCount(0);
 });
 
-// problem user cannot sort products, so those tests will fail
+// problem_user cannot sort products, so those tests will fail
 const users = [{ username: "standard_user" }, { username: "problem_user" }];
 users.forEach(({ username }) => {
   test(`${username} can sort products`, async ({ page }) => {
