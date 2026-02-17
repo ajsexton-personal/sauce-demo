@@ -17,6 +17,9 @@ export class InventoryItem {
     } else this.item = page.getByTestId("inventory-item").nth(0);
     this.price = this.item.getByTestId("inventory-item-price");
     this.name = this.item.getByTestId("inventory-item-name");
+    // have to use getByRole here as the testId is unique to each inventory item
+    // done this way this is a reusable component that works on all inventory items
+    // on multiple pages
     this.addToCartButton = this.item.getByRole("button", {
       name: "Add to cart",
     });
